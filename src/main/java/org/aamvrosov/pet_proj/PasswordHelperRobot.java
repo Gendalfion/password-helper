@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class PasswordHelperRobot {
-    private final static int KEY_INPUT_DELAY = 4;
+    private final static int KEY_INPUT_DELAY = 10;
 
     private final static Robot robot;
 
