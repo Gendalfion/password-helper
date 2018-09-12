@@ -1,1 +1,10 @@
 language: java
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: distr
+  on:
+    branch: master
