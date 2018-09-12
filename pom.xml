@@ -88,7 +88,7 @@
                                   <directory>${project.distribution.directory}</directory>
                               </resource>
                               <resource>
-                                  <directory>src\main\resources\github-pages</directory>
+                                  <directory>src/main/resources/github-pages</directory>
                               </resource>
                               <resource>
                                   <directory>${basedir}</directory>
