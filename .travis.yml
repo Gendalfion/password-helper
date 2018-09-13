@@ -9,3 +9,13 @@ deploy:
   verbose: true
   on:
     branch: master
+
+deploy:
+  provider: releases
+  api_key:
+    secure: U3oqGsdIJ7k93qq42GBis2j3bUjlDU44dC3zAG773Y1XCP3nFQJ5RBTmzvuPiOsTQ0Uxj/lWrQoPE+85WQS7XF1odTobD/Mzn3c9rIEfBVa+aPgV28qbcTAjJH8g7x9vSAe4vS7vjdjcYCdbJTFVlomx6FTthZK0OJwL1ljkyqAE/1uBJZ6NlreVjeGFKtolthvVJB0vdh3XNkWNfcjfLS4efRgLcRTTZX6gObNvq4kxVrTD/C05nu5+mc/yXFkNQAvtJEzP4ogt1viVGOPlVN/x+H06T+4eck9P4bcOfgW6islyo6fWNjIGb4ULeWKhrWa1PR/Ilin0vp8J1kJ/n6klP1nZH7D8i9slcEMaNhTIXdk2dHJZgNHhpQR2S+dJYxFFjhnvKMHgvcONPwgg/aXXzw3l33jn0kCx+7bZqKh2hwQfMLEb6EZLJLvtv/9Zr9USVflqoqQfUGHokkSHKXbgAXf+ovpcOpqYTzHWu7Wh28fOipRWxFoKDxvlVgPyo//S56UOs9SkU/dMKf8BVJFE85noOpbRtJ0CQX2NV4ZfM2w4dcjnwrQmcDBqxlVErpPBxvhVrgqvFyv4niI3FD2xNmLSdmlsAeIcvScCZaZiqNuGWyvErk+mP7TIyUtuUv0t03PJTOrBx7JmycFStfMYcIVepRcHYtKrBQ0xslk=
+  file: distr/**/*
+  skip_cleanup: true
+  on:
+    repo: Gendalfion/password-helper
+    tags: true
