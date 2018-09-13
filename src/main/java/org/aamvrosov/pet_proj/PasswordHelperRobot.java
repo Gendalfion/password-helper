@@ -34,7 +34,7 @@ public class PasswordHelperRobot {
             robot.delay(KEY_INPUT_DELAY);
             robot.keyRelease(KeyEvent.VK_ENTER);
         } else {
-            System.err.println("Program takes 2 arguments: login and password!");
+            System.err.println("Program takes 2 arguments: user name and password!");
             System.exit(1);
         }
     }
