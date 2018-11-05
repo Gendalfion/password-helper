@@ -17,25 +17,51 @@ public class PasswordHelperRobot {
     }
 
     public static void main(String[] args) {
-        if (args.length == 2) {
-            String login = extractEnv(args[0]);
-            String password = extractEnv(args[1]);
+        if (args.length != 1 && args.length != 2) {
+            System.err.println("Program takes 1 or 2 arguments: user name(optional) and password(required)!");
+            System.exit(1);
+        }
 
-            type(login);
+        provideAltTabIfWindows();
 
+        switch (args.length) {
+            case 2: {
+                String login = extractEnv(args[0]);
+                String password = extractEnv(args[1]);
+
+                typeTextAndPressKey(login, KeyEvent.VK_TAB);
+                typeTextAndPressKey(password, KeyEvent.VK_ENTER);
+
+                break;
+            }
+            case 1: {
+                String password = extractEnv(args[0]);
+
+                typeTextAndPressKey(password, KeyEvent.VK_ENTER);
+                break;
+            }
+        }
+    }
+
+    private static void typeTextAndPressKey(String text, int keyCode) {
+        type(text);
+
+        robot.keyPress(keyCode);
+        robot.delay(KEY_INPUT_DELAY);
+        robot.keyRelease(keyCode);
+        robot.delay(KEY_INPUT_DELAY);
+    }
+
+    private static void provideAltTabIfWindows() {
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            robot.keyPress(KeyEvent.VK_ALT);
+            robot.delay(KEY_INPUT_DELAY);
             robot.keyPress(KeyEvent.VK_TAB);
             robot.delay(KEY_INPUT_DELAY);
             robot.keyRelease(KeyEvent.VK_TAB);
             robot.delay(KEY_INPUT_DELAY);
-
-            type(password);
-
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.delay(KEY_INPUT_DELAY);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-        } else {
-            System.err.println("Program takes 2 arguments: user name and password!");
-            System.exit(1);
+            robot.keyRelease(KeyEvent.VK_ALT);
+            robot.delay(KEY_INPUT_DELAY * 2);
         }
     }
 
