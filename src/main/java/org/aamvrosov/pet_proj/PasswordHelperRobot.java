@@ -1,6 +1,8 @@
 package org.aamvrosov.pet_proj;
 
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
 public class PasswordHelperRobot {
@@ -66,24 +68,16 @@ public class PasswordHelperRobot {
     }
 
     private static void type(String line) {
-        for (char c : line.toCharArray()) {
-            final int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
-            if (Character.isUpperCase(c)) {
-                robot.keyPress(KeyEvent.VK_SHIFT);
-                robot.delay(KEY_INPUT_DELAY);
-            }
+        StringSelection stringSelection = new StringSelection(line);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
 
-            robot.keyPress(keyCode);
-            robot.delay(KEY_INPUT_DELAY);
-
-            if (Character.isUpperCase(c)) {
-                robot.keyRelease(KeyEvent.VK_SHIFT);
-                robot.delay(KEY_INPUT_DELAY);
-            }
-
-            robot.keyRelease(keyCode);
-            robot.delay(KEY_INPUT_DELAY);
-        }
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(KEY_INPUT_DELAY);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.delay(KEY_INPUT_DELAY);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_V);
     }
 
     private static String extractEnv(String line) {
